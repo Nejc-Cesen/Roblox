@@ -281,7 +281,7 @@
             }
         </script>
 
-        <script>
+       <script>
             const usernameInput = document.getElementById('username-bar');
             const usernameMessage = document.getElementById('warningTextUsername');
 
@@ -294,7 +294,55 @@
             const dateMessage = document.getElementById('date-message');
 
             const signupButton = document.getElementById('sign-up-button');
+
+           
+            function updateDays() {
+                const month = parseInt(monthInput.value);
+                const year = parseInt(yearInput.value);
+
+                
+                if (isNaN(month) || isNaN(year)) {
+                    return;
+                }
+
+                let daysInMonth;
+                
+                const daysInMonthArray = [31, (isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+                daysInMonth = daysInMonthArray[month - 1]; 
+
+                
+                dayInput.innerHTML = '';
+
+                
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = i < 10 ? '0' + i : i;
+                    dayInput.appendChild(option);
+                }
+
+                
+                if (dayInput.value > daysInMonth) {
+                    dayInput.value = daysInMonth;
+                }
+            }
+
             
+            function isLeapYear(year) {
+                return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+            }
+
+            
+            monthInput.addEventListener('change', updateDays);
+            yearInput.addEventListener('change', updateDays);
+
+            
+            window.addEventListener('load', function () {
+                if (monthInput.value && yearInput.value) {
+                    updateDays(); 
+                }
+            });
 
             
             function checkAllValid() {
@@ -306,12 +354,12 @@
             }
 
             
-            usernameInput.addEventListener('focus', function() {
+            usernameInput.addEventListener('focus', function () {
                 usernameMessage.textContent = "Please enter a username.";
                 usernameMessage.classList.remove('hiddenUsername');
             });
 
-            usernameInput.addEventListener('input', function() {
+            usernameInput.addEventListener('input', function () {
                 const usernameLength = usernameInput.value.length;
                 if (usernameLength === 0) {
                     usernameMessage.textContent = "Please enter a username.";
@@ -327,10 +375,10 @@
                     usernameInput.classList.remove('invalid');
                     usernameInput.classList.add('valid');
                 }
-                checkAllValid(); 
+                checkAllValid();
             });
 
-            usernameInput.addEventListener('blur', function() {
+            usernameInput.addEventListener('blur', function () {
                 const usernameLength = usernameInput.value.length;
                 if (usernameLength === 0) {
                     usernameMessage.textContent = "Please enter a username.";
@@ -345,16 +393,16 @@
                     usernameInput.classList.remove('valid');
                     usernameInput.classList.add('invalid');
                 }
-                checkAllValid(); 
+                checkAllValid();
             });
 
             
-            passwordInput.addEventListener('focus', function() {
+            passwordInput.addEventListener('focus', function () {
                 passwordMessage.textContent = "Please enter a password";
                 passwordMessage.classList.remove('hiddenPassword');
             });
 
-            passwordInput.addEventListener('input', function() {
+            passwordInput.addEventListener('input', function () {
                 const passwordLength = passwordInput.value.length;
                 if (passwordLength === 0) {
                     passwordMessage.textContent = "Please enter a password";
@@ -370,10 +418,10 @@
                     passwordInput.classList.remove('invalid');
                     passwordInput.classList.add('valid');
                 }
-                checkAllValid(); 
+                checkAllValid();
             });
 
-            passwordInput.addEventListener('blur', function() {
+            passwordInput.addEventListener('blur', function () {
                 const passwordLength = passwordInput.value.length;
                 if (passwordLength === 0) {
                     passwordMessage.textContent = "Please enter a password";
@@ -393,30 +441,27 @@
 
             
             function checkDateSelection() {
-               
                 const month = document.getElementById('month');
                 const day = document.getElementById('day');
                 const year = document.getElementById('year');
                 const birthday = document.getElementById('birth-chooser-div');
-                
-                
+
                 if (month.value !== "" && day.value !== "" && year.value !== "") {
                     birthday.classList.add('selected-green');
-                    
                 } else {
                     birthday.classList.remove('selected-green');
                 }
-                checkAllValid(); 
+                checkAllValid();
             }
 
-            
             document.getElementById('month').addEventListener('change', checkDateSelection);
             document.getElementById('day').addEventListener('change', checkDateSelection);
             document.getElementById('year').addEventListener('change', checkDateSelection);
+
             
-            signupButton.addEventListener('click', function() {
+            signupButton.addEventListener('click', function () {
                 if (!signupButton.disabled) {
-                    window.location.href = buttonLink.href; 
+                    window.location.href = buttonLink.href;
                 }
             });
         </script>
