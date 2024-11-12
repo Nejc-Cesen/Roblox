@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Log in to Roblox</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="slike/RobloxLogo.ico">
+    <link rel="stylesheet" href="https://use.typekit.net/your-kit-id.css">
+    <style>
+        /* Additional styling for the warning message */
+        .warning {
+            color: red;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="glavni">
+        <div id="meni-div">
+            <div id="logo">
+                <a href=""><img id="logoR" src="slike/roblox.png" alt="ROBLOX"></a>
+            </div>
+
+            <div id="meni">
+                <ul>
+                    <li><a>Charts</a></li>
+                    <li><a>Marketplace</a></li>
+                    <li><a>Create</a></li>
+                    <li><a>Robux</a></li>
+                </ul>
+            </div>
+
+            <div id="search-bar-div">
+                <div id="search-bar-div2">
+                    <a href=""><img id="search-icon" src="slike/search2.jpg" alt="search-loop"></a>
+                    <form>
+                        <input type="text" id="search-bar" placeholder="Search" autocomplete="off">
+                    </form>
+                </div>
+            </div>
+
+            <div id="sign-up">
+                <a href="index2.html">Sign Up</a>
+            </div>
+        </div>
+
+        <div id="drugi">
+            <div id="login-to-roblox">
+                <div id="naslov">
+                    <h1>Login to Roblox</h1>
+                </div>
+
+                <!-- Apply validation on form submission with onsubmit attribute -->
+                <div id="login-password-field">
+                    <form onsubmit="return validateForm()">
+                        <input type="text" id="username-bar" placeholder="Username/Email/Phone" autocomplete="off"><br>
+                        <input type="password" id="password-bar" placeholder="Password">
+                        <p id="warningText" class="warning">Username and password required</p>
+                        <input type="submit" id="log-button" onclick="validateForm()"value="Log In">
+                        <a href="" id="forgot">Forgot Password or Username?</a>
+                        <hr id="crta1">
+                        <input type="submit" id="email-button" value="Email Me a One-Time Code" onclick="openPopup()"  class="open-popup-btn" autocomplete="off">
+                        <input type="submit" id="device-button" value="Use Another Device" onclick="openPopup1()" class="open-popup-btn1">
+                        <p>Don't have an account?</p>
+                        <a href="index2.html" id="link-sign">Sign Up</a>
+                    </form>
+                </div>
+            </div>
+
+            <div id="tretji">
+                <div id="spodnji-meni">
+                    <ul class="spodnji-ul">
+                        <li class="spodnji-li" style="margin-right: 10px; margin-left: 24px;"><a class="spodnja-a">About Us</a></li>
+                        <li class="spodnji-li" style="margin-right: 10px; margin-left: 10px;"><a class="spodnja-a">Jobs</a></li>
+                        <li class="spodnji-li" style="margin-right: 10px; margin-left: 10px;"><a class="spodnja-a">Blog</a></li>
+                        <li class="spodnji-li" style="margin-right: 10px; margin-left: 10px;"><a class="spodnja-a">Parents</a></li>
+                        <li class="spodnji-li" style="margin-right: 10px; margin-left: 10px;"><a class="spodnja-a">Gift Cards</a></li>
+                        <li class="spodnji-li" style="margin-right: 10px; margin-left: 10px;"><a class="spodnja-a">Help</a></li>
+                        <li class="spodnji-li" style="margin-right: 10px; margin-left: 10px;"><a class="spodnja-a">Teams</a></li>
+                        <li class="spodnji-li" style="margin-right: 10px; margin-left: 10px;"><a class="spodnja-a">Accessibility</a></li>
+                        <li class="spodnji-li" style="margin-right: 10px; margin-left: 10px;"><a class="spodnja-a">Privacy</a></li>
+                        <li class="spodnji-li" style="margin-left: 10px;"><a class="spodnja-a">Your Privacy Choices</a></li><img src="slike/kljukca.png" id="kljuka" alt="kljuka" style="margin-top:2px; float:left">
+                        <li class="spodnji-li" style="margin-right: 10px; margin-left: 20px;"><a class="spodnja-a">Cookie Options</a></li>
+                    </ul>
+                </div>
+                <hr id="crta2">
+                <div id="copyright">
+                    <p id="copy-text">&copy2024 Roblox Corporation. Roblox, the Roblox logo and Powering Imagination are among our registered and unregistered trademarks in the U.S. and other countries.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="popupOverlay" class="popup-overlay">
+            <div class="popup-content">
+                <div id="close-pop-div">
+                    <a href="javascript:void(0)" onclick="closePopup()" class="close-btn">&times;</a>
+                </div>
+
+                <div id="inside-popup">            
+                    <p>Enter the email verified on your account to receive a one-time code.</p>
+                    
+                    <input id="email-input" type="text" class="email-forgot" placeholder="Email">
+                    <p id="warningTextEmail" class="hiddenEmail">Invalid email address.</p>
+
+                    <div id="send-div">
+                        <button id="send" disabled>Send Code</button>
+                    </div>
+                    
+                </div>
+
+
+            </div>
+        </div>
+
+        <div id="popupOverlay1" class="popup-overlay1">
+            <div class="popup-content1">
+                <div id="close-pop-div1">
+                    <a href="javascript:void(0)" onclick="closePopup1()" class="close-btn1">&times;</a>
+                    <p>Quick Sign In Code</p>
+                </div>
+
+                <div id="inside-popup1">            
+                    <p style="display: block;">Option 1</p>
+                    <img style="display: block; margin:20px auto 10px;" src="slike/qr.png">
+                    <p style="display: block; font-size:15px; margin-bottom: 5px;">Scan this QR code from your logged in device's camera.</p>
+                    <a href=https://en.help.roblox.com/hc/en-us/articles/360056582012-Quick-Login" alt="trouble">Having trouble?</a>
+                    <p style="display: block; margin-top: 25px; margin-bottom: 15px;">Option 2</p>
+                    <p id="randomCode" style="display: block;"></p>
+                    <p style="display: block; font-size:15px; margin-bottom: 2px;">Open your Roblox app and go to:</p>
+                    <p style="display: block; font-size:15px; margin-bottom: 2px;">More Page > Quick Sign In to enter your code.</p>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <script>
+        function validateForm() {
+            
+            const username = document.getElementById('username-bar').value;
+            const password = document.getElementById('password-bar').value;
+            const warningText = document.getElementById('warningText');
+
+            
+            if (username === '' || password === '') {
+                warningText.style.display = 'block'; 
+                return false; 
+            } else {
+                warningText.style.display = 'none';  
+                return true; 
+            }
+        }
+    </script>
+
+<script>
+    
+    function openPopup() {
+        document.getElementById("popupOverlay").style.display = "flex";
+    }
+
+    
+    function closePopup() {
+        document.getElementById("popupOverlay").style.display = "none";
+    }
+
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const emailInput = document.getElementById("email-input");
+        const sendButton = document.getElementById("send");
+        const warningText = document.getElementById("warningTextEmail");
+
+        
+        emailInput.addEventListener('focus', () => {
+            if (!emailInput.value.includes('@')) {
+                warningText.style.display = 'block'; 
+            }
+        });
+
+        
+        emailInput.addEventListener('input', () => {
+            if (emailInput.value.includes('@')) {
+                warningText.style.display = 'none'; 
+                sendButton.classList.add('active'); 
+            } else {
+                warningText.style.display = 'block'; 
+                sendButton.classList.remove('active'); 
+            }
+        });
+
+        
+        sendButton.addEventListener('click', () => {
+            if (sendButton.classList.contains('active')) {
+                closePopup(); 
+                
+            }
+        });
+    });
+</script>
+
+<script>
+    
+    function openPopup1() {
+        document.getElementById("popupOverlay1").style.display = "flex";
+    }
+
+    
+    function closePopup1() {
+        document.getElementById("popupOverlay1").style.display = "none";
+    }
+</script>
+
+<script>
+    
+    function generateRandomCode() {
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        let code = "";
+        for (let i = 0; i < 6; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            code += characters[randomIndex];
+        }
+        return code;
+    }
+
+    
+    document.getElementById("randomCode").innerText = generateRandomCode();
+
+    
+    document.getElementById("device-button").onclick1 = function() {
+        document.getElementById("randomCode").innerText = generateRandomCode();
+    };
+</script>
+
+</body>
+</html>
